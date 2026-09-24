@@ -40,6 +40,13 @@ const (
 	archAMD64 = "amd64"
 	archARM64 = "arm64"
 	archARM   = "arm"
+	archX64   = "x64"
+	archIA32  = "ia32"
+
+	osAndroid = "android"
+	osDarwin  = "darwin"
+	osLinux   = "linux"
+	osWindows = "windows"
 )
 
 // Cross-platform package pattern recognition (for precise matching)
@@ -59,32 +66,32 @@ var platformPatterns = []struct {
 	arch  string
 }{
 	// Android
-	{regexp.MustCompile(`-android-arm64$`), "android", archARM64},
-	{regexp.MustCompile(`-android-arm$`), "android", archARM},
-	{regexp.MustCompile(`-android-x64$`), "android", "x64"},
+	{regexp.MustCompile(`-android-arm64$`), osAndroid, archARM64},
+	{regexp.MustCompile(`-android-arm$`), osAndroid, archARM},
+	{regexp.MustCompile(`-android-x64$`), osAndroid, archX64},
 
 	// Darwin (macOS)
-	{regexp.MustCompile(`-darwin-arm64$`), "darwin", archARM64},
-	{regexp.MustCompile(`-darwin-x64$`), "darwin", "x64"},
+	{regexp.MustCompile(`-darwin-arm64$`), osDarwin, archARM64},
+	{regexp.MustCompile(`-darwin-x64$`), osDarwin, archX64},
 
 	// Linux
-	{regexp.MustCompile(`-linux-arm64-glibc$`), "linux", archARM64},
-	{regexp.MustCompile(`-linux-arm64-musl$`), "linux", archARM64},
-	{regexp.MustCompile(`-linux-arm-glibc$`), "linux", archARM},
-	{regexp.MustCompile(`-linux-arm-musl$`), "linux", archARM},
-	{regexp.MustCompile(`-linux-x64-glibc$`), "linux", "x64"},
-	{regexp.MustCompile(`-linux-x64-musl$`), "linux", "x64"},
-	{regexp.MustCompile(`-linux-x64$`), "linux", "x64"},
-	{regexp.MustCompile(`-linux-arm64$`), "linux", archARM64},
-	{regexp.MustCompile(`-linux-arm$`), "linux", archARM},
+	{regexp.MustCompile(`-linux-arm64-glibc$`), osLinux, archARM64},
+	{regexp.MustCompile(`-linux-arm64-musl$`), osLinux, archARM64},
+	{regexp.MustCompile(`-linux-arm-glibc$`), osLinux, archARM},
+	{regexp.MustCompile(`-linux-arm-musl$`), osLinux, archARM},
+	{regexp.MustCompile(`-linux-x64-glibc$`), osLinux, archX64},
+	{regexp.MustCompile(`-linux-x64-musl$`), osLinux, archX64},
+	{regexp.MustCompile(`-linux-x64$`), osLinux, archX64},
+	{regexp.MustCompile(`-linux-arm64$`), osLinux, archARM64},
+	{regexp.MustCompile(`-linux-arm$`), osLinux, archARM},
 
 	// Windows
-	{regexp.MustCompile(`-win32-arm64$`), "windows", archARM64},
-	{regexp.MustCompile(`-win32-ia32$`), "windows", "ia32"},
-	{regexp.MustCompile(`-win32-x64$`), "windows", "x64"},
+	{regexp.MustCompile(`-win32-arm64$`), osWindows, archARM64},
+	{regexp.MustCompile(`-win32-ia32$`), osWindows, archIA32},
+	{regexp.MustCompile(`-win32-x64$`), osWindows, archX64},
 
 	// FreeBSD
-	{regexp.MustCompile(`-freebsd-x64$`), "freebsd", "x64"},
+	{regexp.MustCompile(`-freebsd-x64$`), "freebsd", archX64},
 }
 
 type NpmResolver struct {

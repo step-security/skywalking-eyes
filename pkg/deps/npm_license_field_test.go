@@ -27,7 +27,7 @@ func TestIsLicenseFileReference(t *testing.T) {
 		{"SEE LICENSE IN LICENSE", true},
 		{"See license in LICENSE.md", true},
 		{"  SEE LICENSE IN ./legal/terms.txt", true},
-		{"MIT", false},
+		{mit, false},
 		{"Apache-2.0", false},
 		{"MIT OR Apache-2.0", false},
 		{"", false},

@@ -76,7 +76,7 @@ func TestCategoryBCompatAndWeakCompat(t *testing.T) {
 	// 2) B with A should fail without weak flag
 	if err := deps.CheckWithMatrix("Ruby", getMatrix("Ruby"), &deps.Report{Resolved: []*deps.Result{{
 		Dependency:    "B-WeakCompat-Off",
-		LicenseSpdxID: "Apache-2.0",
+		LicenseSpdxID: spdxApache20,
 	}}}, false); err == nil {
 		t.Fatalf("Ruby should NOT accept Apache-2.0 when weak-compatible is off")
 	}
@@ -84,7 +84,7 @@ func TestCategoryBCompatAndWeakCompat(t *testing.T) {
 	// 3) B with A should pass with weak flag
 	if err := deps.CheckWithMatrix("Ruby", getMatrix("Ruby"), &deps.Report{Resolved: []*deps.Result{{
 		Dependency:    "B-WeakCompat-On",
-		LicenseSpdxID: "Apache-2.0",
+		LicenseSpdxID: spdxApache20,
 	}}}, true); err != nil {
 		t.Fatalf("Ruby should accept Apache-2.0 when weak-compatible is on: %v", err)
 	}

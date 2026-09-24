@@ -26,7 +26,7 @@ import (
 
 var TestMatrix = deps.CompatibilityMatrix{
 	Compatible: []string{
-		"Apache-2.0",
+		spdxApache20,
 		"PHP-3.01",
 		"BSD-3-Clause",
 		"BSD-2-Clause",

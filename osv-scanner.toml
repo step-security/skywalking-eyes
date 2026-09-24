@@ -15,18 +15,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM golang:1.26-alpine@sha256:8ac98ca534ac3f51e1f420a1dd2c15e74c75cfa0f23f3ad27eb5d7236c349a0c AS build
-
-WORKDIR /license-eye
-
-COPY . .
-
-RUN apk add --no-cache make curl && make linux
-
-FROM alpine:3@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6 AS bin
-
-COPY --from=build /license-eye/bin/linux/license-eye /bin/license-eye
-
-WORKDIR /github/workspace/
-
-ENTRYPOINT ["/bin/license-eye"]
+[[IgnoredVulns]]
+id = "GO-2026-5932"
+reason = "golang.org/x/crypto is a transitive dependency of go-git used for SSH only; the vulnerable openpgp subpackage is not used by this project"
