@@ -113,6 +113,7 @@ linters:
     rules:
       - linters:
           - funlen
+          - goconst
         path: _test\.go
 formatters:
   enable:

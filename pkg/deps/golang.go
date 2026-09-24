@@ -40,7 +40,9 @@ type GoModResolver struct {
 }
 
 const (
-	goModFileName = "go.mod"
+	goModFileName    = "go.mod"
+	goModSubCmd      = "mod"
+	goModDownloadCmd = "download"
 )
 
 var (
@@ -76,8 +78,8 @@ func (resolver *GoModResolver) Resolve(goModFile string, config *ConfigDeps, rep
 	}
 
 	base := filepath.Base(goModFile)
-	downloadArgs := []string{"mod", "download"}
-	jsonArgs := []string{"mod", "download", "-json"}
+	downloadArgs := []string{goModSubCmd, goModDownloadCmd}
+	jsonArgs := []string{goModSubCmd, goModDownloadCmd, "-json"}
 	if base != goModFileName {
 		downloadArgs = append(downloadArgs, "-modfile", base)
 		jsonArgs = append(jsonArgs, "-modfile", base)

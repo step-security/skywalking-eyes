@@ -70,7 +70,7 @@ func TestResolveCargos(t *testing.T) {
 		if len(report.Resolved) != 1 {
 			t.Error("len(report.Resolved) != 1")
 		}
-		if report.Resolved[0].LicenseSpdxID != "Apache-2.0" {
+		if report.Resolved[0].LicenseSpdxID != spdxApache20 {
 			t.Error("Package foo license isn't Apache-2.0")
 		}
 	}

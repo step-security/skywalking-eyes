@@ -26,6 +26,12 @@ import (
 	"github.com/step-security/skywalking-eyes/pkg/logger"
 )
 
+const (
+	normSublicense  = "sublicense"
+	normCopyright   = "Copyright "
+	normNeitherName = "Neither the name of the copyright holder nor the names of its contributors may be used to endorse"
+)
+
 type Normalizer func(string) string
 
 var (
@@ -118,14 +124,14 @@ var (
 		{regexp.MustCompile(`(?i)\brealize\b`), "realise"},
 		{regexp.MustCompile(`(?i)\brecognize\b`), "recognise"},
 		{regexp.MustCompile(`(?i)\bsignaling\b`), "signalling"},
-		{regexp.MustCompile(`(?i)\bsub licen[sc]e\b`), "sublicense"},
-		{regexp.MustCompile(`(?i)\bsub-licen[sc]e\b`), "sublicense"},
+		{regexp.MustCompile(`(?i)\bsub licen[sc]e\b`), normSublicense},
+		{regexp.MustCompile(`(?i)\bsub-licen[sc]e\b`), normSublicense},
 		{regexp.MustCompile(`(?i)\butilization\b`), "utilisation"},
 		{regexp.MustCompile(`(?i)\bwhile\b`), "whilst"},
 		{regexp.MustCompile(`(?i)\bwilfull\b`), "wilful"},
 
-		{regexp.MustCompile(`©`), "Copyright "},
-		{regexp.MustCompile(`\(([cC])\)`), "Copyright "},
+		{regexp.MustCompile(`©`), normCopyright},
+		{regexp.MustCompile(`\(([cC])\)`), normCopyright},
 		{regexp.MustCompile(`\bhttps://`), "http://"},
 
 		{regexp.MustCompile(`“+`), `'`},
@@ -159,11 +165,11 @@ var (
 		},
 		{
 			regexp.MustCompile(`(?i)The names of (its|the) contributors may not be used to endorse`),
-			"Neither the name of the copyright holder nor the names of its contributors may be used to endorse",
+			normNeitherName,
 		},
 		{
 			regexp.MustCompile(`(?i)The name (.+?) may not be used to endorse`),
-			"Neither the name of the copyright holder nor the names of its contributors may be used to endorse",
+			normNeitherName,
 		},
 		{
 			regexp.MustCompile(`(?i)(neither the name)( of)? (.+?) (nor the names)( of( its authors and)?)?( its)?`),
