@@ -1,6 +1,6 @@
 module github.com/step-security/skywalking-eyes
 
-go 1.25.3
+go 1.26.0
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
@@ -15,7 +15,7 @@ require (
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/net v0.56.0
 	golang.org/x/oauth2 v0.27.0
-	golang.org/x/sync v0.21.0
+	golang.org/x/sync v0.23.0
 	golang.org/x/tools v0.47.0
 	gopkg.in/yaml.v3 v3.0.1
 )
