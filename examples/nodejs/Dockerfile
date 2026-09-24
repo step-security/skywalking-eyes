@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM apache/skywalking-eyes:latest
+FROM apache/skywalking-eyes:latest@sha256:cd89ccbbcba2e87d3fb0e34b156b1da208d6c5ac1ada4e2d335e920022c765b8
 
 ARG NODE_VERSION=22.13.1
 ARG TARGETARCH

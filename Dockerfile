@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM golang:1.25-alpine AS build
+FROM golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 AS build
 
 WORKDIR /license-eye
 
@@ -23,7 +23,7 @@ COPY . .
 
 RUN apk add --no-cache make curl && make linux
 
-FROM alpine:3 AS bin
+FROM alpine:3@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6 AS bin
 
 COPY --from=build /license-eye/bin/linux/license-eye /bin/license-eye
 
