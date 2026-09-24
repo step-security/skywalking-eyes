@@ -37,7 +37,7 @@
     <dependency>
       <groupId>org.apache.skywalking</groupId>
       <artifactId>skywalking-sharing-server-plugin</artifactId>
-      <version>8.6.0</version>
+      <version>10.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
