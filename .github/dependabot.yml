@@ -1,0 +1,56 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /examples/golang
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /examples/java
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /examples/nodejs
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: bundler
+    directory: /pkg/deps/testdata/ruby/app
+    schedule:
+      interval: daily
+
+  - package-ecosystem: bundler
+    directory: /pkg/deps/testdata/ruby/citrus
+    schedule:
+      interval: daily
+
+  - package-ecosystem: bundler
+    directory: /pkg/deps/testdata/ruby/library
+    schedule:
+      interval: daily
+
+  - package-ecosystem: bundler
+    directory: /pkg/deps/testdata/ruby/local_dep
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /pkg/deps/testdata/maven/base
+    schedule:
+      interval: daily
